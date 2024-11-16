@@ -24,3 +24,23 @@ Go的Map可以使用`for range`来遍历，和Python的`dict`一样。
 > -- [Go语言规范](https://golang.org/ref/spec#Map_types)  
 
 这里的“无序”指的是遍历时的顺序，而不是键值对的存储顺序。
+
+# 关于Scanner的终止输入（stdin）
+这里有一点需要注意一下：如何中止`Scan()`的循环？  
+其实不难：如果要结束输入，先输入一个空格，然后按`Ctrl+D`（Linux）或`Ctrl+Z`（Windows）即可。
+
+# Go的fmt.Printf()（格式化输出）
+看上去和C语言的`printf()`差不多。使用的格式化占位符也参考了C语言`stdio.h`的`printf()`。  
+参数本身也和C语言的`printf()`类似，第一个参数是格式化字符串，后面的参数是要输出的内容。
+之前使用的`fmt.Println()`是没有格式化功能的，只能输出字符串。  
+这一点更接近于Java的`System.out.println()`，JS的`console.log()`，Python的`print()`。  
+参考这一惯例，基本上以`f`结尾的函数都是格式化输出的，且不自带换行符。  
+而以`ln`结尾的函数则是普通输出，自带换行符。  
+
+# 关于Go的变量及其类型
+Go是一种静态类型语言，变量的类型在编译时就已经确定。同样的，变量的类型也是不可变的。  
+不过和之前见过的其他语言都不一样，Go变量的类型后置，中间却使用空格分隔变量名和类型。这和C和Java的变量类型前置，TypeScript和Kotlin的变量类型后置、使用冒号分隔有所不同。  
+以及，Go似乎是存在指针类型的，不过功能相比于C和C++有所简化，比如说没有指针运算。  
+
+顺带一提，map的类型是`map[keyType]valueType`。颇有意思。  
+Java、Kotlin和TypeScript都是使用泛型来表示Map的键和值的类型。
